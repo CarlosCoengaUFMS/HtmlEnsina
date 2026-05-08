@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Ensina - Documentação Completa de JavaScript</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            background: #f4f6f9;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            background: #f0db4f;
+            color: #333;
+            position: fixed;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .sidebar h1 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            color: #333;
+        }
+
+        .sidebar .back-home {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 5px;
+            text-align: center;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+
+        .sidebar .back-home:hover {
+            background: rgba(0,0,0,0.2);
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav ul li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar nav ul li a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .sidebar nav ul li a:hover {
+            background: #333;
+            color: #f0db4f;
+            transform: translateX(5px);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 30px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #f0db4f;
+            margin-bottom: 20px;
+            border-left: 5px solid #f0db4f;
+            padding-left: 15px;
+            font-size: 1.8em;
+            text-shadow: 1px 1px 0 #333;
+        }
+
+        h3 {
+            color: #1a1a2e;
+            margin: 20px 0 10px;
+            font-size: 1.3em;
+        }
+
+        code {
+            background: #1a1a2e;
+            color: #f0db4f;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background: #1a1a2e;
+            color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #f0db4f;
+            padding: 0;
+        }
+
+        .example {
+            border: 2px dashed #f0db4f;
+            padding: 20px;
+            margin: 20px 0;
+            background: #fffef0;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #333;
+            color: #f0db4f;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .concept-item {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            border-bottom: 3px solid #f0db4f;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            body {
+                flex-direction: column;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <h1>⚡ JS Ensina</h1>
+        <a href="index.html" class="back-home">🏠 Voltar para Home</a>
+        <nav>
+            <ul>
+                <li><a href="#introducao">📖 Introdução ao JavaScript</a></li>
+                <li><a href="#variaveis">📦 Variáveis</a></li>
+                <li><a href="#tipos-dados">📊 Tipos de Dados</a></li>
+                <li><a href="#operadores">🔢 Operadores</a></li>
+                <li><a href="#condicionais">🔀 Estruturas Condicionais</a></li>
+                <li><a href="#loops">🔄 Loops</a></li>
+                <li><a href="#funcoes">🎯 Funções</a></li>
+                <li><a href="#arrays">📚 Arrays</a></li>
+                <li><a href="#objetos">🏗️ Objetos</a></li>
+                <li><a href="#dom">🌳 Manipulação do DOM</a></li>
+                <li><a href="#eventos">🎪 Eventos</a></li>
+                <li><a href="#async">⏳ Assíncrono</a></li>
+                <li><a href="#es6">🚀 ES6+</a></li>
+                <li><a href="#boas-praticas">✅ Boas Práticas</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <!-- Introdução -->
+        <section id="introducao">
+            <h2>📖 Introdução ao JavaScript</h2>
+            <p><strong>JavaScript</strong> é uma linguagem de programação que permite implementar funcionalidades complexas em páginas web. É a terceira camada do desenvolvimento web, junto com HTML e CSS.</p>
+            
+            <h3>Onde usar JavaScript:</h3>
+            <pre><code>&lt;!-- JavaScript Interno --&gt;
+&lt;script&gt;
+    console.log('Olá, Mundo!');
+&lt;/script&gt;
+
+&lt;!-- JavaScript Externo --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+        </section>
+
+        <!-- Variáveis -->
+        <section id="variaveis">
+            <h2>📦 Variáveis</h2>
+            
+            <pre><code>// var - Escopo global/função (EVITAR)
+var nome = "João";
+
+// let - Escopo de bloco (USAR)
+let idade = 25;
+
+// const - Constante, não pode ser reatribuída
+const PI = 3.14159;
+
+// Boas práticas
+let firstName = "Maria"; // camelCase
+const MAX_USERS = 100; // UPPERCASE para constantes</code></pre>
+        </section>
+
+        <!-- Tipos de Dados -->
+        <section id="tipos-dados">
+            <h2>📊 Tipos de Dados</h2>
+            
+            <pre><code>// String
+let texto = "Olá Mundo";
+let template = `Olá ${nome}`;
+
+// Number
+let inteiro = 42;
+let decimal = 3.14;
+
+// Boolean
+let ativo = true;
+let inativo = false;
+
+// Array
+let frutas = ["maçã", "banana", "laranja"];
+
+// Object
+let pessoa = {
+    nome: "Ana",
+    idade: 30
+};
+
+// Undefined
+let indefinido;
+
+// Null
+let vazio = null;</code></pre>
+        </section>
+
+        <!-- Operadores -->
+        <section id="operadores">
+            <h2>🔢 Operadores</h2>
+            
+            <pre><code>// Aritméticos
+let soma = 10 + 5;      // 15
+let subtracao = 10 - 5; // 5
+let multiplicacao = 10 * 5; // 50
+let divisao = 10 / 5;   // 2
+let modulo = 10 % 3;    // 1
+let exponenciacao = 2 ** 3; // 8
+
+// Comparação
+console.log(5 == "5");  // true (igualdade)
+console.log(5 === "5"); // false (estritamente igual)
+console.log(5 != "5");  // false
+console.log(5 !== "5"); // true
+
+// Lógicos
+let e = true && false;  // false
+let ou = true || false; // true
+let nao = !true;        // false</code></pre>
+        </section>
+
+        <!-- Condicionais -->
+        <section id="condicionais">
+            <h2>🔀 Estruturas Condicionais</h2>
+            
+            <pre><code>// if...else
+let idade = 18;
+if (idade >= 18) {
+    console.log("Maior de idade");
+} else {
+    console.log("Menor de idade");
+}
+
+// switch
+let dia = 2;
+switch(dia) {
+    case 1:
+        console.log("Segunda");
+        break;
+    case 2:
+        console.log("Terça");
+        break;
+    default:
+        console.log("Outro dia");
+}
+
+// Ternário
+let status = idade >= 18 ? "Adulto" : "Jovem";</code></pre>
+        </section>
+
+        <!-- Loops -->
+        <section id="loops">
+            <h2>🔄 Loops</h2>
+            
+            <pre><code>// for
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// while
+let contador = 0;
+while (contador < 5) {
+    console.log(contador);
+    contador++;
+}
+
+// for...of (arrays)
+let frutas = ["maçã", "banana", "laranja"];
+for (let fruta of frutas) {
+    console.log(fruta);
+}
+
+// for...in (objetos)
+for (let chave in objeto) {
+    console.log(chave, objeto[chave]);
+}</code></pre>
+        </section>
+
+        <!-- Funções -->
+        <section id="funcoes">
+            <h2>🎯 Funções</h2>
+            
+            <pre><code>// Declaração de função
+function saudacao(nome) {
+    return `Olá, ${nome}!`;
+}
+
+// Arrow function
+const soma = (a, b) => a + b;
+
+// Função anônima
+const multiplicar = function(a, b) {
+    return a * b;
+};
+
+// Parâmetros padrão
+function dividir(a, b = 1) {
+    return a / b;
+}
+
+// Rest parameters
+function somarTudo(...numeros) {
+    return numeros.reduce((a, b) => a + b, 0);
+}</code></pre>
+        </section>
+
+        <!-- Arrays -->
+        <section id="arrays">
+            <h2>📚 Arrays</h2>
+            
+            <pre><code>let numeros = [1, 2, 3, 4, 5];
+
+// Métodos importantes
+numeros.push(6);       // Adiciona no final
+numeros.pop();         // Remove do final
+numeros.unshift(0);    // Adiciona no início
+numeros.shift();       // Remove do início
+
+// Métodos funcionais
+numeros.map(n => n * 2);        // [2, 4, 6, 8, 10]
+numeros.filter(n => n > 3);     // [4, 5]
+numeros.reduce((a, b) => a + b); // 15
+numeros.find(n => n === 3);     // 3
+numeros.includes(5);            // true
+
+// Spread operator
+let novosNumeros = [...numeros, 6, 7];</code></pre>
+        </section>
+
+        <!-- Objetos -->
+        <section id="objetos">
+            <h2>🏗️ Objetos</h2>
+            
+            <pre><code>// Objeto literal
+let carro = {
+    marca: "Toyota",
+    modelo: "Corolla",
+    ano: 2022,
+    ligar() {
+        console.log("Carro ligado!");
+    }
+};
+
+// Acessando propriedades
+console.log(carro.marca);
+console.log(carro["modelo"]);
+
+// Destructuring
+let { marca, modelo, ano } = carro;
+
+// Spread em objetos
+let carroCompleto = { ...carro, cor: "prata" };</code></pre>
+        </section>
+
+        <!-- DOM -->
+        <section id="dom">
+            <h2>🌳 Manipulação do DOM</h2>
+            
+            <pre><code>// Selecionando elementos
+let elemento = document.getElementById("meuId");
+let elementos = document.getElementsByClassName("classe");
+let query = document.querySelector(".seletor");
+let queryAll = document.querySelectorAll("p");
+
+// Modificando conteúdo
+elemento.textContent = "Novo texto";
+elemento.innerHTML = "&lt;strong&gt;HTML&lt;/strong&gt;";
+
+// Modificando estilos
+elemento.style.color = "red";
+elemento.classList.add("ativo");
+elemento.classList.toggle("visivel");
+
+// Criando elementos
+let novoParagrafo = document.createElement("p");
+novoParagrafo.textContent = "Olá!";
+document.body.appendChild(novoParagrafo);</code></pre>
+        </section>
+
+        <!-- Eventos -->
+        <section id="eventos">
+            <h2>🎪 Eventos</h2>
+            
+            <pre><code>// Adicionando event listener
+elemento.addEventListener("click", function() {
+    console.log("Clicado!");
+});
+
+// Eventos comuns
+elemento.addEventListener("mouseover", handler);
+elemento.addEventListener("keydown", handler);
+elemento.addEventListener("submit", handler);
+elemento.addEventListener("change", handler);
+
+// Event object
+elemento.addEventListener("click", function(event) {
+    console.log(event.target);
+    event.preventDefault();
+    event.stopPropagation();
+});</code></pre>
+        </section>
+
+        <!-- Assíncrono -->
+        <section id="async">
+            <h2>⏳ Programação Assíncrona</h2>
+            
+            <pre><code>// Callbacks (antigo)
+setTimeout(() => {
+    console.log("Executado após 2 segundos");
+}, 2000);
+
+// Promises
+fetch("https://api.exemplo.com/dados")
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+
+// Async/Await (moderno)
+async function buscarDados() {
+    try {
+        let response = await fetch("url");
+        let data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Erro:", error);
+    }
+}</code></pre>
+        </section>
+
+        <!-- ES6+ -->
+        <section id="es6">
+            <h2>🚀 Recursos Modernos (ES6+)</h2>
+            
+            <pre><code>// Template literals
+let nome = "Maria";
+console.log(`Olá ${nome}!`);
+
+// Arrow functions
+const quadrado = x => x * x;
+
+// Modules
+import { funcao } from './modulo.js';
+export default class MinhaClasse { }
+
+// Optional chaining
+let cidade = usuario?.endereco?.cidade;
+
+// Nullish coalescing
+let valor = input ?? "padrão";</code></pre>
+        </section>
+
+        <!-- Boas Práticas -->
+        <section id="boas-praticas">
+            <h2>✅ Boas Práticas em JavaScript</h2>
+            
+            <h3>1. Use const e let</h3>
+            <p>Evite <code>var</code>, prefira <code>const</code> e <code>let</code>.</p>
+
+            <h3>2. Nomes descritivos</h3>
+            <pre><code>// Ruim
+let x = 10;
+
+// Bom
+let numeroDeUsuarios = 10;</code></pre>
+
+            <h3>3. Tratamento de erros</h3>
+            <pre><code>try {
+    // código que pode falhar
+} catch (erro) {
+    console.error("Erro:", erro.message);
+}</code></pre>
+
+            <h3>4. Código limpo</h3>
+            <ul>
+                <li>Funções pequenas e específicas</li>
+                <li>Evite código duplicado</li>
+                <li>Comente apenas quando necessário</li>
+                <li>Use === ao invés de ==</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

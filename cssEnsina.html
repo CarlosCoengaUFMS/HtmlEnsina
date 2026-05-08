@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Ensina - Documentação Completa de CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            background: #f4f6f9;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            background: #264de4;
+            color: white;
+            position: fixed;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .sidebar h1 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .sidebar .back-home {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .sidebar .back-home:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav ul li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar nav ul li a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .sidebar nav ul li a:hover {
+            background: white;
+            color: #264de4;
+            transform: translateX(5px);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 30px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #264de4;
+            margin-bottom: 20px;
+            border-left: 5px solid #264de4;
+            padding-left: 15px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #1a1a2e;
+            margin: 20px 0 10px;
+            font-size: 1.3em;
+        }
+
+        code {
+            background: #1a1a2e;
+            color: #00d2ff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background: #1a1a2e;
+            color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #f4f4f4;
+            padding: 0;
+        }
+
+        .example {
+            border: 2px dashed #264de4;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f0f4ff;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #264de4;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .property-item {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            border-left: 3px solid #264de4;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            body {
+                flex-direction: column;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <h1>🎨 CSS Ensina</h1>
+        <a href="index.html" class="back-home">🏠 Voltar para Home</a>
+        <nav>
+            <ul>
+                <li><a href="#introducao">📖 Introdução ao CSS</a></li>
+                <li><a href="#sintaxe">✍️ Sintaxe Básica</a></li>
+                <li><a href="#seletores">🎯 Seletores</a></li>
+                <li><a href="#cores">🎨 Cores e Fundos</a></li>
+                <li><a href="#texto">📝 Propriedades de Texto</a></li>
+                <li><a href="#box-model">📦 Box Model</a></li>
+                <li><a href="#flexbox">🔲 Flexbox</a></li>
+                <li><a href="#grid">📐 CSS Grid</a></li>
+                <li><a href="#animacoes">✨ Animações</a></li>
+                <li><a href="#responsivo">📱 Design Responsivo</a></li>
+                <li><a href="#pseudo">🎭 Pseudo-classes e Pseudo-elementos</a></li>
+                <li><a href="#boas-praticas">✅ Boas Práticas</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <!-- Introdução -->
+        <section id="introducao">
+            <h2>📖 Introdução ao CSS</h2>
+            <p><strong>CSS</strong> (Cascading Style Sheets) é a linguagem usada para estilizar documentos HTML. Com CSS você controla cores, fontes, layouts e animações.</p>
+            
+            <h3>Formas de Aplicar CSS:</h3>
+            <pre><code>&lt;!-- CSS Inline --&gt;
+&lt;p style="color: blue;"&gt;Texto azul&lt;/p&gt;
+
+&lt;!-- CSS Interno --&gt;
+&lt;style&gt;
+    p { color: red; }
+&lt;/style&gt;
+
+&lt;!-- CSS Externo --&gt;
+&lt;link rel="stylesheet" href="estilos.css"&gt;</code></pre>
+        </section>
+
+        <!-- Sintaxe -->
+        <section id="sintaxe">
+            <h2>✍️ Sintaxe Básica</h2>
+            <pre><code>seletor {
+    propriedade: valor;
+    propriedade: valor;
+}
+
+/* Exemplo */
+h1 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+}</code></pre>
+        </section>
+
+        <!-- Seletores -->
+        <section id="seletores">
+            <h2>🎯 Seletores CSS</h2>
+            
+            <h3>Tipos de Seletores:</h3>
+            <pre><code>/* Seletor de elemento */
+p { color: blue; }
+
+/* Seletor de classe */
+.destaque { background: yellow; }
+
+/* Seletor de ID */
+#cabecalho { height: 100px; }
+
+/* Seletor universal */
+* { margin: 0; padding: 0; }
+
+/* Seletores combinados */
+div.conteudo p { color: red; }
+
+/* Seletores múltiplos */
+h1, h2, h3 { font-family: Arial; }</code></pre>
+
+            <div class="example">
+                <h4>Seletores Avançados:</h4>
+                <ul>
+                    <li><code>div > p</code> - Filhos diretos</li>
+                    <li><code>div + p</code> - Irmão adjacente</li>
+                    <li><code>div ~ p</code> - Irmãos gerais</li>
+                    <li><code>[atributo]</code> - Seletor de atributo</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Cores -->
+        <section id="cores">
+            <h2>🎨 Cores e Fundos</h2>
+            
+            <h3>Formatos de Cor:</h3>
+            <pre><code>/* Nome da cor */
+color: red;
+
+/* Hexadecimal */
+color: #FF0000;
+
+/* RGB */
+color: rgb(255, 0, 0);
+
+/* RGBA (com transparência) */
+color: rgba(255, 0, 0, 0.5);
+
+/* HSL */
+color: hsl(0, 100%, 50%);</code></pre>
+
+            <h3>Propriedades de Fundo:</h3>
+            <pre><code>body {
+    background-color: #f0f0f0;
+    background-image: url('fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}</code></pre>
+        </section>
+
+        <!-- Texto -->
+        <section id="texto">
+            <h2>📝 Propriedades de Texto</h2>
+            <pre><code>.texto-exemplo {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}</code></pre>
+        </section>
+
+        <!-- Box Model -->
+        <section id="box-model">
+            <h2>📦 Box Model</h2>
+            <p>Todo elemento HTML é uma caixa composta por: conteúdo, padding, border e margin.</p>
+            
+            <pre><code>.caixa {
+    /* Conteúdo */
+    width: 300px;
+    height: 200px;
+    
+    /* Preenchimento interno */
+    padding: 20px;
+    
+    /* Borda */
+    border: 2px solid #333;
+    border-radius: 10px;
+    
+    /* Margem externa */
+    margin: 20px;
+    
+    /* Box sizing */
+    box-sizing: border-box;
+}</code></pre>
+        </section>
+
+        <!-- Flexbox -->
+        <section id="flexbox">
+            <h2>🔲 Flexbox</h2>
+            <p>Flexbox é um modelo de layout unidimensional para distribuir espaço entre itens.</p>
+            
+            <pre><code>.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.item {
+    flex: 1;
+    min-width: 200px;
+}</code></pre>
+
+            <h3>Propriedades do Container:</h3>
+            <div class="property-grid">
+                <div class="property-item"><code>display: flex</code></div>
+                <div class="property-item"><code>flex-direction</code></div>
+                <div class="property-item"><code>justify-content</code></div>
+                <div class="property-item"><code>align-items</code></div>
+                <div class="property-item"><code>flex-wrap</code></div>
+                <div class="property-item"><code>gap</code></div>
+            </div>
+        </section>
+
+        <!-- Grid -->
+        <section id="grid">
+            <h2>📐 CSS Grid</h2>
+            <p>Grid é um sistema de layout bidimensional para criar designs complexos.</p>
+            
+            <pre><code>.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+}
+
+.grid-item {
+    background: #f0f0f0;
+    padding: 20px;
+}</code></pre>
+
+            <h3>Funções Úteis:</h3>
+            <ul>
+                <li><code>repeat()</code> - Repete colunas/linhas</li>
+                <li><code>minmax()</code> - Define tamanho mínimo e máximo</li>
+                <li><code>fr</code> - Unidade fracionária</li>
+                <li><code>auto-fill / auto-fit</code> - Preenchimento automático</li>
+            </ul>
+        </section>
+
+        <!-- Animações -->
+        <section id="animacoes">
+            <h2>✨ Animações e Transições</h2>
+            
+            <h3>Transições:</h3>
+            <pre><code>.botao {
+    background: blue;
+    transition: all 0.3s ease;
+}
+
+.botao:hover {
+    background: red;
+    transform: scale(1.1);
+}</code></pre>
+
+            <h3>Animações Keyframes:</h3>
+            <pre><code>@keyframes deslizar {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(100px); }
+    100% { transform: translateX(0); }
+}
+
+.elemento {
+    animation: deslizar 2s infinite;
+}</code></pre>
+        </section>
+
+        <!-- Responsivo -->
+        <section id="responsivo">
+            <h2>📱 Design Responsivo</h2>
+            
+            <h3>Media Queries:</h3>
+            <pre><code>/* Mobile First */
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+        margin: 0 auto;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .container {
+        width: 960px;
+    }
+}</code></pre>
+
+            <h3>Unidades Responsivas:</h3>
+            <ul>
+                <li><code>%</code> - Porcentagem</li>
+                <li><code>vw</code> - Viewport Width</li>
+                <li><code>vh</code> - Viewport Height</li>
+                <li><code>em</code> - Relativo ao elemento pai</li>
+                <li><code>rem</code> - Relativo ao elemento raiz</li>
+            </ul>
+        </section>
+
+        <!-- Pseudo-classes -->
+        <section id="pseudo">
+            <h2>🎭 Pseudo-classes e Pseudo-elementos</h2>
+            
+            <h3>Pseudo-classes:</h3>
+            <pre><code>a:hover { color: red; }
+a:visited { color: purple; }
+input:focus { border-color: blue; }
+li:first-child { font-weight: bold; }
+li:last-child { margin-bottom: 0; }
+li:nth-child(odd) { background: #f0f0f0; }</code></pre>
+
+            <h3>Pseudo-elementos:</h3>
+            <pre><code>p::first-line { font-weight: bold; }
+p::first-letter { font-size: 2em; }
+.quote::before { content: '"'; }
+.quote::after { content: '"'; }
+::selection { background: yellow; }</code></pre>
+        </section>
+
+        <!-- Boas Práticas -->
+        <section id="boas-praticas">
+            <h2>✅ Boas Práticas em CSS</h2>
+            
+            <h3>1. Metodologia BEM</h3>
+            <pre><code>/* Bloco__Elemento--Modificador */
+.cartao__titulo--destaque {
+    color: red;
+}</code></pre>
+
+            <h3>2. Variáveis CSS</h3>
+            <pre><code>:root {
+    --cor-primaria: #264de4;
+    --espacamento: 20px;
+}
+
+.elemento {
+    color: var(--cor-primaria);
+    padding: var(--espacamento);
+}</code></pre>
+
+            <h3>3. Organize seu CSS</h3>
+            <ul>
+                <li>Use comentários para separar seções</li>
+                <li>Mantenha a especificidade baixa</li>
+                <li>Evite <code>!important</code></li>
+                <li>Prefira classes a IDs para estilização</li>
+                <li>Minifique o CSS em produção</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
